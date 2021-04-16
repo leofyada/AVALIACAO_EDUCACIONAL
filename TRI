@@ -7,6 +7,7 @@ library(data.table) # pacote utilizado para leitura da base de dados do Enem
 library(car) # pacote utilizado para construir a amostra
 library(mirt) # pacote utilizado para aplicação da TRI
 library(WrightMap) # pacote utilizado para criar o Diagrama de Wright
+library(ltm) # pacote utilizado para aplicação da TCT
 
 # ---------------------------------------------
 # Leitura dos arquivos dos microdados do Enem -
@@ -33,6 +34,12 @@ for(n in 1:str_length(df_amostra$TX_RESPOSTAS_MT[1])){
   colnames(df_amostra)[ncol(df_amostra)] <- paste0('Q', n)
 }
 df_questoes <- df_amostra[137:181]
+
+# -----------------------------------------------------------
+# Aplicando rotinas de estatística clássica com base na TCT -
+# -----------------------------------------------------------
+
+des <- descript(df_questoes)
 
 # ---------------------------------------------------------------
 # Aplicando o modelo de 3 parâmetros logísticos à base de dados -
