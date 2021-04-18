@@ -79,10 +79,13 @@ plot(modelo, type='trace', which.item = c(5, 13), facet_items=T,
      theta_lim = c(-3, 3), 
      main = "")
 
-# --------------------
-# Visualizando a CCI -
-# --------------------
+# ----------------------------
+# Visualizando a CCT e a CIT -
+# ----------------------------
 
+plot(modelo)
+plot(modelo, type = "info")
+plot(modelo, type = "infoSE")
 plot(modelo, type = "trace")
 plot(modelo, type = "infotrace")
 plot(modelo, type = "trace", facet_item = F)
@@ -96,17 +99,21 @@ prof <- as.vector(fscores(modelo))
 
 prof_padronizada <- (prof * 50) + 250
 
-plot(prof_padronizada, 
-     escore_total, 
-     title("Relação entre quantificação de acertos e proficiência"),
-     xlab = "Proficiência",
-     ylab = "Escore total bruto")
-     
-cor(prof_padronizada, escore_total, method = "pearson")
-
 # -----------------------------------
 # Visualizando o Diagrama de Wright -
 # -----------------------------------
 
 wrightMap(prof, modelo_coef$items[, 2])
+
+# -----------------------------------
+# Escore total bruto e proficiência -
+# -----------------------------------
+
+plot(prof, 
+     escore_total, 
+     title("Relação entre quantificação de acertos e proficiência"),
+     xlab = "Proficiência",
+     ylab = "Escore total bruto")
+
+cor(prof_padronizada, escore_total, method = "pearson")
 
