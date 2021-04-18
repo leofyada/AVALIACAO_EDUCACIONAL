@@ -101,6 +101,8 @@ plot(prof_padronizada,
      title("Relação entre quantificação de acertos e proficiência"),
      xlab = "Proficiência",
      ylab = "Escore total bruto")
+     
+cor(prof_padronizada, escore_total, method = "pearson")
 
 # -----------------------------------
 # Visualizando o Diagrama de Wright -
