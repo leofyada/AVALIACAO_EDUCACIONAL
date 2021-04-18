@@ -40,6 +40,7 @@ df_questoes <- df_amostra[137:181]
 # -----------------------------------------------------------
 
 des <- descript(df_questoes)
+escore_total <- as.vector(rowSums(df_questoes))
 
 # ---------------------------------------------------------------
 # Aplicando o modelo de 3 parâmetros logísticos à base de dados -
@@ -92,7 +93,10 @@ plot(modelo, type = "infotrace", facet_item = F)
 # ---------------------------------------------------
 
 prof <- as.vector(fscores(modelo))
-plot(prof, 
+
+prof_padronizada <- (prof * 50) + 250
+
+plot(prof_padronizada, 
      escore_total, 
      title("Relação entre quantificação de acertos e proficiência"),
      xlab = "Proficiência",
@@ -103,3 +107,4 @@ plot(prof,
 # -----------------------------------
 
 wrightMap(prof, modelo_coef$items[, 2])
+
