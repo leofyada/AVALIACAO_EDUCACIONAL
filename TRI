@@ -92,6 +92,11 @@ plot(modelo, type = "infotrace", facet_item = F)
 # ---------------------------------------------------
 
 prof <- as.vector(fscores(modelo))
+plot(prof, 
+     escore_total, 
+     title("Relação entre quantificação de acertos e proficiência"),
+     xlab = "Proficiência",
+     ylab = "Escore total bruto")
 
 # -----------------------------------
 # Visualizando o Diagrama de Wright -
